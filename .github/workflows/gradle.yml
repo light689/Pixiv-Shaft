@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - classic
+      - android5-armeabi-v7a
     tags:
       - v*.*.*
   pull_request:
