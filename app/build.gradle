@@ -96,8 +96,9 @@ android {
             // （GitHub 硬件加速模拟器是 x86_64），两者给定时 TEST_ABI 优先。
             def testAbi = providers.gradleProperty('SHAFT_TEST_ABI').orNull
             def explicitAbi = providers.gradleProperty('SHAFT_ABI_FILTERS').orNull
-            abiFilters((testAbi ?: explicitAbi ?: 'arm64-v8a,armeabi-v7a')
-                    .split(',').collect { it.trim() } as List)
+            def filters = (testAbi ?: explicitAbi ?: 'arm64-v8a,armeabi-v7a')
+                    .split(',').collect { it.trim() }
+            abiFilters(*filters)
         }
 
         // Shaft community events server (shaft-api-v2). The URL is not secret.
